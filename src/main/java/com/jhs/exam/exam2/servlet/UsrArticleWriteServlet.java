@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 public class UsrArticleWriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = request.getParameter("name");
-
 		// 들어오는 파리미터를 UTF-8로 해석
 		request.setCharacterEncoding("UTF-8");
 
