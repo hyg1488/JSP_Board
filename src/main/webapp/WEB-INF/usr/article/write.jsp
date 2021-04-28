@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP BOARD</title>
+
+<!-- 모바일에서 디자인이 축소되지 않게 하기 위한 코드 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- 데이지 UI 불러오기 -->
 <link href="https://cdn.jsdelivr.net/npm/daisyui@0.20.0/dist/full.css"
 	rel="stylesheet" type="text/css" />
@@ -17,15 +21,15 @@
 </head>
 
 <body>
-	<section class="section section-article-write">
+	<section class="section section-article-write px-4">
 		<div class="container mx-auto">
 			<script>
 				let ArticleWrite__submitDone = false;
 				function ArticleWrite__submit(form) {
-					if ( ArticleWrite__submitDone ) {
+					if (ArticleWrite__submitDone) {
 						return;
 					}
-					
+
 					if (form.title.value.length == 0) {
 						alert('제목을 입력해주세요.');
 						form.title.focus();
@@ -39,7 +43,7 @@
 
 						return;
 					}
-					
+
 					form.submit();
 					ArticleWrite__submitDone = true;
 				}
