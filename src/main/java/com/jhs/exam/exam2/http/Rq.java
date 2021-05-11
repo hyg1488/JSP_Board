@@ -3,6 +3,8 @@ package com.jhs.exam.exam2.http;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -80,5 +82,14 @@ public class Rq {
 
 	public void println(String str) {
 		print(str + "\n");
+	}
+
+	public void jsp(String jspPath) {
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/" + jspPath + ".jsp");
+		try {
+			requestDispatcher.forward(req, resp);
+		} catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

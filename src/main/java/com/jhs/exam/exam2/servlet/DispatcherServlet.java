@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jhs.exam.exam2.http.Rq;
+import com.jhs.exam.exam2.http.controller.Controller;
+import com.jhs.exam.exam2.http.controller.UsrArticleController;
 import com.jhs.mysqliutil.MysqlUtil;
 
 @WebServlet("/usr/*")
@@ -20,16 +22,27 @@ public class DispatcherServlet extends HttpServlet {
 			rq.print("올바른 요청이 아닙니다.");
 		}
 
-		rq.println("controllerTypeName : " + rq.getControllerTypeName());
-		rq.println("<br>");
-		rq.println("controllerName : " + rq.getControllerName());
-		rq.println("<br>");
-		rq.println("actionMethodName : " + rq.getActionMethodName());
+		Controller controller = null;
 
-		MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "jsp_board");
-		MysqlUtil.setDevMode(true);
+		switch (rq.getControllerTypeName()) {
+		case "usr":
+			switch (rq.getControllerName()) {
+			case "article":
+				controller = new UsrArticleController();
+				break;
+			}
 
-		MysqlUtil.closeConnection();
+			break;
+		}
+
+		if (controller != null) {
+			MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "jsp_board");
+			MysqlUtil.setDevMode(true);
+
+			controller.performAction(rq);
+
+			MysqlUtil.closeConnection();
+		}
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
