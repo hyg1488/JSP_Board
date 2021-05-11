@@ -92,4 +92,18 @@ public class Rq {
 			e.printStackTrace();
 		}
 	}
+
+	public String getParam(String paramName, String defaultValue) {
+		String paramValue = req.getParameter(paramName);
+		
+		if ( paramValue == null ) {
+			return defaultValue;
+		}
+		
+		return paramValue;
+	}
+
+	public void printf(String format, Object... args) {
+		print(String.format(format, args));
+	}
 }
