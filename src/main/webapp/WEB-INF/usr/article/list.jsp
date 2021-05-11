@@ -4,8 +4,8 @@
 <%@ page import="com.jhs.exam.exam2.dto.Article" %>
 <%
 List<Article> articles = (List<Article>)request.getAttribute("articles");
-%>	
-	
+%>
+
 <!DOCTYPE html>
 <html>
 <head>

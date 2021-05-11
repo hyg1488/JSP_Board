@@ -8,14 +8,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jhs.exam.exam2.util.Ut;
+
+import lombok.Getter;
+import lombok.ToString;
+
+@ToString
 public class Rq {
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
+	@Getter
 	private boolean isInvalid = false;
+	@Getter
 	private String controllerTypeName;
+	@Getter
 	private String controllerName;
+	@Getter
 	private String actionMethodName;
-
+	
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
 		// 들어오는 파리미터를 UTF-8로 해석
 		try {
@@ -52,26 +62,6 @@ public class Rq {
 		this.actionMethodName = requestUriBits[actionMethodNameIndex];
 	}
 
-	public HttpServletRequest getReq() {
-		return req;
-	}
-
-	public boolean isInvalid() {
-		return isInvalid;
-	}
-
-	public String getControllerTypeName() {
-		return controllerTypeName;
-	}
-
-	public String getControllerName() {
-		return controllerName;
-	}
-
-	public String getActionMethodName() {
-		return actionMethodName;
-	}
-
 	public void print(String str) {
 		try {
 			resp.getWriter().append(str);
@@ -104,6 +94,13 @@ public class Rq {
 	}
 
 	public void printf(String format, Object... args) {
-		print(String.format(format, args));
+		print(Ut.f(format, args));
+	}
+
+	public void historyBack(String msg) {
+		println("<script>");
+		printf("alert('%s');\n", msg);
+		println("history.back();");
+		println("</script>");
 	}
 }
