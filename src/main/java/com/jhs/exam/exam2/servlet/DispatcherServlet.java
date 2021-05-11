@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jhs.exam.exam2.container.Container;
 import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.http.controller.Controller;
 import com.jhs.exam.exam2.http.controller.UsrArticleController;
@@ -28,7 +29,7 @@ public class DispatcherServlet extends HttpServlet {
 		case "usr":
 			switch (rq.getControllerName()) {
 			case "article":
-				controller = new UsrArticleController();
+				controller = Container.usrArticleController;
 				break;
 			}
 
@@ -36,9 +37,6 @@ public class DispatcherServlet extends HttpServlet {
 		}
 
 		if (controller != null) {
-			MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "jsp_board");
-			MysqlUtil.setDevMode(true);
-
 			controller.performAction(rq);
 
 			MysqlUtil.closeConnection();
