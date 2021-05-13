@@ -23,12 +23,15 @@ public class UsrArticleController extends Controller {
 		case "doWrite":
 			actionDoWrite(rq);
 			break;
+		default:
+			rq.println("존재하지 않는 페이지 입니다.");
+			break;
 		}
 	}
 
 	private void actionShowList(Rq rq) {
 		List<Article> articles = articleService.getForPrintArticles();
-		
+
 		rq.setAttr("articles", articles);
 		rq.jsp("usr/article/list");
 	}
@@ -36,6 +39,7 @@ public class UsrArticleController extends Controller {
 	private void actionDoWrite(Rq rq) {
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
+		String redirectUri = rq.getParam("redirectUri", "../article/list");
 
 		if (title.length() == 0) {
 			rq.historyBack("title을 입력해주세요.");
@@ -48,8 +52,11 @@ public class UsrArticleController extends Controller {
 		}
 
 		ResultData writeRd = articleService.write(title, body);
+		int id = (int) writeRd.getBody().get("id");
 
-		rq.printf(writeRd.getMsg());
+		redirectUri = redirectUri.replace("[NEW_ID]", id + "");
+
+		rq.replace(writeRd.getMsg(), redirectUri);
 	}
 
 	private void actionShowWrite(Rq rq) {
