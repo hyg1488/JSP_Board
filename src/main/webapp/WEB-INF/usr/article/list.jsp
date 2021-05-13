@@ -16,9 +16,54 @@
 				<span>게시물 리스트</span>
 			</div>
 
-			<div class="px-4 py-4">
+			<div class="px-4">
 				<c:forEach items="${articles}" var="article">
-					<div>
+					<div class="py-4">
+						<a class="hover:underline cursor-pointer block">
+							<span class="badge badge-outline">제목</span>
+							<div class="line-clamp-3">${article.titleForPrint}</div>
+						</a>
+
+						<div
+							class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+							<a href="#" class="row-span-7">
+								<img class="rounded-full" src="https://i.pravatar.cc/200?img=37"
+									alt="">
+							</a>
+
+							<a href="#" class="hover:underline">
+								<span class="badge badge-primary">번호</span>
+								<span>${article.id}</span>
+							</a>
+
+							<a href="#" class="cursor-pointer hover:underline">
+								<span class="badge badge-accent">작성자</span>
+								<span>${article.memberId}</span>
+							</a>
+
+							<a href="#" class="hover:underline">
+								<span class="badge">등록날짜</span>
+								<span class="text-gray-600 text-light">${article.regDate}</span>
+							</a>
+
+							<a href="#" class="hover:underline">
+								<span class="badge">수정날짜</span>
+								<span class="text-gray-600 text-light">${article.updateDate}</span>
+							</a>
+
+							<a
+								class="mt-3 hover:underline cursor-pointer col-span-1 sm:col-span-2 xl:col-span-3">
+								<span class="badge badge-outline">본문</span>
+								
+								<div class="mt-2">
+									<img class="rounded" src="https://picsum.photos/id/237/300/300" alt="" />
+								</div>
+								
+								<div class="line-clamp-3">${article.bodySummaryForPrint}</div>
+							</a>
+						</div>
+
+						<!--
 						번호 : ${article.id}
 						<br>
 						작성 : ${article.regDate}
@@ -29,6 +74,7 @@
 						<br>
 						내용 : ${article.body}
 						<br>
+						-->
 					</div>
 					<hr />
 				</c:forEach>
