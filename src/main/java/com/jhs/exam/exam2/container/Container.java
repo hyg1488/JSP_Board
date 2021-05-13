@@ -1,8 +1,8 @@
 package com.jhs.exam.exam2.container;
 
 import com.jhs.exam.exam2.http.controller.UsrArticleController;
-import com.jhs.exam.exam2.http.repository.ArticleRepository;
-import com.jhs.exam.exam2.http.service.ArticleService;
+import com.jhs.exam.exam2.repository.ArticleRepository;
+import com.jhs.exam.exam2.service.ArticleService;
 
 public class Container {
 	public static ArticleRepository articleRepository;
