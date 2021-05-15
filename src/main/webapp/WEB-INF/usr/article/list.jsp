@@ -18,7 +18,7 @@
 
 			<div class="px-4">
 				<c:forEach items="${articles}" var="article">
-					<c:set var="detailUri" value="../detail?id=${article.id}" />
+					<c:set var="detailUri" value="../article/detail?id=${article.id}" />
 
 					<div class="py-4">
 						<div class="grid gap-3" style="grid-template-columns: 100px 1fr;">
