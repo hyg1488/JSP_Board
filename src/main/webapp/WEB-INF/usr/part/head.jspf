@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${pageTitle} | JSP BOARD</title>
+<title>${pageTitle}|JSPBOARD</title>
 
 <!-- 모바일에서 디자인이 축소되지 않게 하기 위한 코드 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 <!-- 데이지 UI 불러오기 -->
-<link href="https://cdn.jsdelivr.net/npm/daisyui@0.20.0/dist/full.css"
+<link
+	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@1.4.0/dist/full.css"
 	rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet"
@@ -26,3 +29,66 @@
 </head>
 
 <body>
+
+	<header class="top-bar h-20">
+		<div class="h-full container mx-auto flex">
+			<a href="/" class="top-bar__logo flex items-center px-4">
+				<span>
+					<i class="far fa-lemon"></i>
+				</span>
+				&nbsp;
+				<span> 레몬 커뮤니티 </span>
+			</a>
+			
+			<div class="flex-grow"></div>
+
+			<nav class="top-bar__menu-box-1">
+				<ul class="flex h-full">
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span>
+								<i class="fas fa-home"></i>
+							</span>
+							&nbsp;
+							<span>HOME</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span>
+								<i class="fas fa-flag"></i>
+							</span>
+							&nbsp;
+							<span>NOTICE LIST</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span>
+								<i class="fab fa-free-code-camp"></i>
+							</span>
+							&nbsp;
+							<span>FREE LIST</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span>
+								<i class="fas fa-sign-in-alt"></i>
+							</span>
+							&nbsp;
+							<span>LOGIN</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="h-full flex items-center px-4">
+							<span>
+								<i class="fas fa-user-plus"></i>
+							</span>
+							<span>JOIN</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
