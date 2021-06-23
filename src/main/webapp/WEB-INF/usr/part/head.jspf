@@ -72,7 +72,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
+						<a href="../member/login" class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 							<span>
 								<i class="fas fa-sign-in-alt"></i>
 							</span>
