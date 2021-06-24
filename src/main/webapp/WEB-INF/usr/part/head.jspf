@@ -77,7 +77,7 @@
 							<span>FREE LIST</span>
 						</a>
 					</li>
-					<c:if test="${loginedMemberJson == null}">
+					<c:if test="${isLogined == false}">
 						<li>
 							<a href="../member/login"
 								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
@@ -98,9 +98,9 @@
 							</a>
 						</li>
 					</c:if>
-					<c:if test="${loginedMemberJson != null}">
+					<c:if test="${isLogined}">
 						<li>
-							<a href="../member/doLogin"
+							<a href="../member/doLogout"
 								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-sign-out-alt"></i>

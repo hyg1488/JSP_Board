@@ -113,7 +113,9 @@ public class Rq {
 
 	public void historyBack(String msg) {
 		println("<script>");
-		printf("alert('%s');\n", msg);
+		if (msg != null && msg.trim().length() > 0) {
+			printf("alert('%s');\n", msg.trim());
+		}
 		println("history.back();");
 		println("</script>");
 	}
@@ -128,7 +130,9 @@ public class Rq {
 
 	public void replace(String msg, String redirectUri) {
 		println("<script>");
-		printf("alert('%s');\n", msg);
+		if (msg != null && msg.trim().length() > 0) {
+			printf("alert('%s');\n", msg.trim());
+		}
 		printf("location.replace('%s');\n", redirectUri);
 		println("</script>");
 	}
@@ -141,7 +145,11 @@ public class Rq {
 		req.getSession().removeAttribute(attrName);
 	}
 
-	public <T> T getSessionAttr(String attrName) {
+	public <T> T getSessionAttr(String attrName, T defaultValue) {
+		if (req.getSession().getAttribute(attrName) == null) {
+			return defaultValue;
+		}
+
 		return (T) req.getSession().getAttribute(attrName);
 	}
 }

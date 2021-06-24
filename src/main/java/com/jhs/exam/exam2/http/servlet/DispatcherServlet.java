@@ -1,4 +1,4 @@
-package com.jhs.exam.exam2.servlet;
+package com.jhs.exam.exam2.http.servlet;
 
 import java.io.IOException;
 
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.jhs.exam.exam2.container.Container;
 import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.http.controller.Controller;
-import com.jhs.exam.exam2.http.controller.UsrArticleController;
 import com.jhs.mysqliutil.MysqlUtil;
 
 @WebServlet("/usr/*")
@@ -24,6 +23,10 @@ public class DispatcherServlet extends HttpServlet {
 		}
 
 		Controller controller = null;
+
+		if (runInterceptors(rq) == false) {
+			return;
+		}
 
 		switch (rq.getControllerTypeName()) {
 		case "usr":
@@ -44,6 +47,23 @@ public class DispatcherServlet extends HttpServlet {
 
 			MysqlUtil.closeConnection();
 		}
+	}
+
+	private boolean runInterceptors(Rq rq) {
+
+		if (Container.beforeActionInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+
+		if (Container.needLoginInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+
+		if (Container.needLogoutInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+
+		return true;
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
