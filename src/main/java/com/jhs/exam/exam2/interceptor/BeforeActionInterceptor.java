@@ -8,21 +8,15 @@ public class BeforeActionInterceptor extends Interceptor {
 
 	@Override
 	public boolean runBeforeAction(Rq rq) {
-		boolean isLogined = false;
-		int loginedMemberId = 0;
-		Member loginedMember = null;
-
 		String loginedMemberJson = rq.getSessionAttr("loginedMemberJson", "");
 
 		if (loginedMemberJson.length() > 0) {
-			isLogined = true;
-			loginedMember = Ut.toObjFromJson(loginedMemberJson, Member.class);
-			loginedMemberId = loginedMember.getId();
+			rq.setLogined(true);
+			rq.setLoginedMember(Ut.toObjFromJson(loginedMemberJson, Member.class));
+			rq.setLoginedMemberId(rq.getLoginedMember().getId());
 		}
-
-		rq.setAttr("isLogined", isLogined);
-		rq.setAttr("loginedMember", loginedMember);
-		rq.setAttr("loginedMemberId", loginedMemberId);
+		
+		rq.setAttr("rq", rq);
 
 		return true;
 	}
