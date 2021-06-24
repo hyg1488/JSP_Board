@@ -19,7 +19,7 @@ public class MemberService {
 			return ResultData.from("F-2", "비밀번호가 일치하지 않습니다.");
 		}
 
-		return ResultData.from("S-1", "환영합니다.");
+		return ResultData.from("S-1", "환영합니다.", "member", member);
 	}
 
 }

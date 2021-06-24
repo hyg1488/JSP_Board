@@ -1,9 +1,7 @@
 package com.jhs.exam.exam2.http.controller;
 
-import java.util.List;
-
 import com.jhs.exam.exam2.container.Container;
-import com.jhs.exam.exam2.dto.Article;
+import com.jhs.exam.exam2.dto.Member;
 import com.jhs.exam.exam2.dto.ResultData;
 import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.service.MemberService;
@@ -46,6 +44,11 @@ public class UsrMemberController extends Controller {
 		if (loginRd.isFail()) {
 			rq.historyBack(loginRd.getMsg());
 		}
+
+		Member member = (Member) loginRd.getBody().get("member");
+
+		rq.setSessionAttr("loginedMemberJson", Ut.toJson(member, ""));
+		rq.replace(loginRd.getMsg(), "../article/list");
 	}
 
 	private void actionShowLogin(Rq rq) {
