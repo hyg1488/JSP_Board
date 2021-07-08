@@ -40,7 +40,7 @@
 
 							<a href="${detailUri}" class="cursor-pointer hover:underline">
 								<span class="badge badge-accent">작성자</span>
-								<span>${article.memberId}</span>
+								<span>${article.extra__writerName}</span>
 							</a>
 
 							<a href="${detailUri}" class="hover:underline">
