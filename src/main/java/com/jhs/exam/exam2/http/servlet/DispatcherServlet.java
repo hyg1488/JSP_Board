@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jhs.exam.exam2.container.Container;
 import com.jhs.exam.exam2.http.Rq;
@@ -20,6 +21,7 @@ public class DispatcherServlet extends HttpServlet {
 
 		if (rq.isInvalid()) {
 			rq.print("올바른 요청이 아닙니다.");
+			return;
 		}
 
 		Controller controller = null;
