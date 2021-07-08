@@ -22,8 +22,24 @@ public class ArticleService {
 		return articleRepository.getForPrintArticles();
 	}
 
-	public Article getForPrintArticleById(int id) {
-		return articleRepository.getForPrintArticleById(id);
+	public Article getForPrintArticleById(Member member, int id) {
+		Article article = articleRepository.getForPrintArticleById(id);
+
+		updateForPrintData(member, article);
+
+		return article;
+	}
+
+	private void updateForPrintData(Member actor, Article article) {
+		if (actor == null) {
+			return;
+		}
+
+		boolean actorCanModify = actorCanModify(actor, article).isSuccess();
+		boolean actorCanDelete = actorCanDelete(actor, article).isSuccess();
+
+		article.setExtra__actorCanModify(actorCanModify);
+		article.setExtra__actorCanDelete(actorCanDelete);
 	}
 
 	public ResultData delete(int id) {

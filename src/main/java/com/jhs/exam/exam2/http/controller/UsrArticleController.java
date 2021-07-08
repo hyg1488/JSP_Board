@@ -51,7 +51,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
 
 		if (article == null) {
 			rq.historyBack(Ut.f("%d번 게시물이 존재하지 않습니다.", id));
@@ -78,7 +78,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
 
 		if (article == null) {
 			rq.historyBack(Ut.f("%d번 게시물이 존재하지 않습니다.", id));
@@ -146,7 +146,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
 
 		if (article == null) {
 			rq.historyBack(Ut.f("%d번 게시물이 존재하지 않습니다.", id));
@@ -173,7 +173,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(rq.getLoginedMember(), id);
 
 		ResultData actorCanModifyRd = articleService.actorCanModify(rq.getLoginedMember(), article);
 

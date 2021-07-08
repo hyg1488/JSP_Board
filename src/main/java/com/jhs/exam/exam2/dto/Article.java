@@ -16,6 +16,8 @@ public class Article {
 	private String body;
 	
 	private String extra__writerName;
+	private boolean extra__actorCanModify;
+	private boolean extra__actorCanDelete;
 	
 	public String getTitleForPrint() {
 		return title;
