@@ -90,12 +90,14 @@ public class UsrArticleController extends Controller {
 	}
 
 	private void actionShowList(Rq rq) {
+		String searchKeywordTypeCode = rq.getParam("searchKeywordTypeCode", "title");
+		String searchKeyword = rq.getParam("searchKeyword", "");
+		
 		int itemsCountInAPage = 5; 
 		int page = rq.getIntParam("page", 1);
 		
-		int totalItemsCount = articleService.getArticlesCount();
-		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), itemsCountInAPage, page);
-
+		int totalItemsCount = articleService.getArticlesCount(searchKeywordTypeCode, searchKeyword);
+		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
 		rq.setAttr("totalItemsCount", totalItemsCount);
 		rq.setAttr("articles", articles);
 		rq.jsp("usr/article/list");
