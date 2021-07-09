@@ -82,4 +82,8 @@ public class ArticleService {
 		return ResultData.from("S-1", "삭제가 가능합니다.");
 	}
 
+	public int getArticlesCount() {
+		return articleRepository.getArticlesCount();
+	}
+
 }
