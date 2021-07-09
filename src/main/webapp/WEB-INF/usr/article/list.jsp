@@ -15,7 +15,7 @@
 				</a>
 				<span>게시물 리스트</span>
 			</div>
-
+			
 			<div class="px-4">
 				<c:forEach items="${articles}" var="article">
 					<c:set var="detailUri" value="../article/detail?id=${article.id}" />
@@ -66,6 +66,21 @@
 							<div class="line-clamp-3">${article.bodySummaryForPrint}</div>
 						</a>
 					</div>
+					
+					<div class="btns mt-3">
+						<c:if test="${article.extra__actorCanModify}">
+							<a href="../article/modify?id=${article.id}" class="btn btn-link">
+								<span><i class="fas fa-edit"></i></span> <span>수정</span>
+							</a>
+						</c:if>
+						<c:if test="${article.extra__actorCanDelete}">
+							<a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;"
+								href="../article/doDelete?id=${article.id}" class="btn btn-link">
+								<span><i class="fas fa-trash-alt"></i></span> <span>삭제</span>
+							</a>
+						</c:if>
+					</div>
+					
 					<hr />
 				</c:forEach>
 			</div>
