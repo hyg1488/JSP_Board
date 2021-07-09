@@ -124,19 +124,8 @@ NOW(),
 now(),
 CAST(RAND() * 2 AS SIGNED) + 1,
 CAST(RAND() * 2 AS SIGNED) + 1,
-concat('제목--', uuid()),
-CONCAT('내용--', UUID())
+concat('제목--', RAND()),
+CONCAT('내용--', RAND())
 from article;
-
-select COUNT(*) from article where id <= 120;
-
-select id
-from article
-order by id asc
-limit 100;
-
-delete from article where id > 157;
-
-select * from article;
 */
 
