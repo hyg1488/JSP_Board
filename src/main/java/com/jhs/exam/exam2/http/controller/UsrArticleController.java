@@ -93,13 +93,13 @@ public class UsrArticleController extends Controller {
 		String searchKeywordTypeCode = rq.getParam("searchKeywordTypeCode", "title");
 		String searchKeyword = rq.getParam("searchKeyword", "");
 		
-		int itemsCountInAPage = 5; 
+		int itemsCountInAPage = 10; 
 		int page = rq.getIntParam("page", 1);
 		
 		int totalItemsCount = articleService.getArticlesCount(searchKeywordTypeCode, searchKeyword);
 		List<Article> articles = articleService.getForPrintArticles(rq.getLoginedMember(), searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
 		
-		int totalPage = 10;
+		int totalPage = (int)Math.ceil((double)totalItemsCount / itemsCountInAPage);
 		
 		rq.setAttr("totalPage", totalPage);
 		rq.setAttr("totalItemsCount", totalItemsCount);
