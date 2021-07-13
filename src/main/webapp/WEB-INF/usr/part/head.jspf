@@ -58,7 +58,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#"
+						<a href="../article/list?boardId=1"
 							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 							<span>
 								<i class="fas fa-flag"></i>
@@ -68,7 +68,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#"
+						<a href="../article/list?boardId=2"
 							class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 							<span>
 								<i class="fab fa-free-code-camp"></i>
