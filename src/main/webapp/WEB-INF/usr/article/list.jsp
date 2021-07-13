@@ -80,7 +80,8 @@
 
 				<div class="page-menu">
 					<c:forEach var="i" begin="1" end="${totalPage}" step="1">
-						<a href="?page=${i}">${i}</a>
+						<c:set var="aClassStr" value="${i == param.page ? 'text-red-500 font-bold' : ''}" />
+						<a class="${aClassStr}" href="?page=${i}">${i}</a>
 					</c:forEach>
 				</div>
 			</div>
