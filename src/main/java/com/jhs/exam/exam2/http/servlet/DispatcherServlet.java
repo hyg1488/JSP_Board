@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.jhs.exam.exam2.container.Container;
 import com.jhs.exam.exam2.http.Rq;
@@ -28,21 +27,7 @@ public class DispatcherServlet extends HttpServlet {
 			return;
 		}
 
-		Controller controller = null;
-
-		switch (rq.getControllerTypeName()) {
-		case "usr":
-			switch (rq.getControllerName()) {
-			case "article":
-				controller = Container.usrArticleController;
-				break;
-			case "member":
-				controller = Container.usrMemberController;
-				break;
-			}
-
-			break;
-		}
+		Controller controller = getControllerByRq(rq);
 
 		if (controller != null) {
 			controller.performAction(rq);
@@ -51,6 +36,22 @@ public class DispatcherServlet extends HttpServlet {
 		} else {
 			rq.print("올바른 요청이 아닙니다.");
 		}
+	}
+
+	private Controller getControllerByRq(Rq rq) {
+		switch (rq.getControllerTypeName()) {
+		case "usr":
+			switch (rq.getControllerName()) {
+			case "article":
+				return Container.usrArticleController;
+			case "member":
+				return Container.usrMemberController;
+			}
+
+			break;
+		}
+
+		return null;
 	}
 
 	private boolean runInterceptors(Rq rq) {
