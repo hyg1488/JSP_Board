@@ -101,6 +101,7 @@ public class UsrArticleController extends Controller {
 		
 		int totalPage = (int)Math.ceil((double)totalItemsCount / itemsCountInAPage);
 		
+		rq.setAttr("page", page);
 		rq.setAttr("totalPage", totalPage);
 		rq.setAttr("totalItemsCount", totalItemsCount);
 		rq.setAttr("articles", articles);
