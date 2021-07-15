@@ -117,15 +117,17 @@ boardId = 2;
 
 /*
 # 테스트 게시물 만들기
-insert into article
+INSERT INTO article
 (regDate, updateDate, boardId, memberId, title, `body`)
-select 
+SELECT 
 NOW(),
-now(),
-CAST(RAND() * 2 AS SIGNED) + 1,
-CAST(RAND() * 2 AS SIGNED) + 1,
-concat('제목--', RAND()),
+NOW(),
+CAST(RAND() * (2 - 1) AS SIGNED) + 1,
+CAST(RAND() * (2 - 1) AS SIGNED) + 1,
+CONCAT('제목--', RAND()),
 CONCAT('내용--', RAND())
-from article;
+FROM article;
 */
+
+
 
