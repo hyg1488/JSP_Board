@@ -21,7 +21,7 @@ public class ResultData {
 	}
 	
 	public boolean isSuccess() {
-		return resultCode.startsWith("S-1");
+		return resultCode.startsWith("S-");
 	}
 	
 	public boolean isFail() {
