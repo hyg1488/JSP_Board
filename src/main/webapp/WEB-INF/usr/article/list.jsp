@@ -80,25 +80,29 @@
 
 				<div class="page-menu">
 					<c:set var="pageMenuArmSize" value="7" />
-					<c:set var="startPage" value="${page - pageMenuArmSize >= 1 ? page - pageMenuArmSize : 1}" />
+					<c:set var="startPage"
+						value="${page - pageMenuArmSize >= 1 ? page - pageMenuArmSize : 1}" />
 					<c:set var="endPage"
 						value="${page + pageMenuArmSize <= totalPage ? page + pageMenuArmSize : totalPage}" />
 
 					<div class="btn-group">
 						<c:if test="${startPage > 1}">
 							<a class="btn btn-sm" href="?page=1">1</a>
-							<button class="btn btn-sm btn-disabled">...</button> 
+							<c:if test="${startPage > 2}">
+								<button class="btn btn-sm btn-disabled">...</button>
+							</c:if>
 						</c:if>
-					
+
 						<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
-							<c:set var="aClassStr"
-								value="${i == page ? 'btn-active' : ''}" />
+							<c:set var="aClassStr" value="${i == page ? 'btn-active' : ''}" />
 							<a class="${aClassStr} btn btn-sm" href="?page=${i}">${i}</a>
 						</c:forEach>
-						
+
 						<c:if test="${endPage < totalPage}">
-							<button class="btn btn-sm btn-disabled">...</button>
-							<a class="btn btn-sm" href="?page=${totalPage}">${totalPage}</a> 
+							<c:if test="${endPage < totalPage - 1}">
+								<button class="btn btn-sm btn-disabled">...</button>
+							</c:if>
+							<a class="btn btn-sm" href="?page=${totalPage}">${totalPage}</a>
 						</c:if>
 					</div>
 				</div>
