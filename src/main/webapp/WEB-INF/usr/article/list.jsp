@@ -6,7 +6,8 @@
 
 <section class="section section-article-write px-4">
 	<div class="container mx-auto">
-
+	
+	<form action="../article/write" method="post">
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
 				<a href="javascript:history.back();" class="cursor-pointer">
@@ -133,6 +134,9 @@
 					<hr />
 				</c:forEach>
 
+				<br>
+					<input type="submit" name="글쓰기" value="글쓰기" style="background-color: #81c147; padding: 5px; float:right;">
+				
 				<div class="page-menu">
 					<c:set var="baseUri" value="?boardId=${boardId}" />
 					
@@ -163,9 +167,12 @@
 							<a class="btn btn-sm" href="${baseUri}&page=${totalPage}">${totalPage}</a>
 						</c:if>
 					</div>
-				</div>
+			</div>
+					
 			</div>
 		</div>
+	</form>
+	
 	</div>
 </section>
 
