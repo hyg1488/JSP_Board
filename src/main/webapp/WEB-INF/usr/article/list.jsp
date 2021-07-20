@@ -139,8 +139,6 @@
 				
 				<div class="page-menu">
 					<c:set var="baseUri" value="?boardId=${boardId}" />
-					
-					
 				
 					<c:set var="pageMenuArmSize" value="7" />
 					
