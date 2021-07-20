@@ -37,6 +37,13 @@
 
 							return;
 						}
+						
+						if (form.boardId.value == "0") {
+							alert('게시판을 선택 해주세요.');
+							form.boardId.focus();
+
+							return;
+						}
 
 						form.submit();
 						ArticleWrite__submitDone = true;
@@ -46,6 +53,11 @@
 					onsubmit="ArticleWrite__submit(this); return false;">
 					<input type="hidden" name="redirectUri"
 						value="../article/detail?id=[NEW_ID]" />
+					<select name="boardId">
+			          <option value="0">--게시판을 선택해주세요--</option>
+			          <option value="1">공지사항</option>
+			          <option value="2">자유 게시판</option>
+			        </select><br>
 					<div class="form-control">
 						<label class="label">
 							<span class="label-text">제목</span>

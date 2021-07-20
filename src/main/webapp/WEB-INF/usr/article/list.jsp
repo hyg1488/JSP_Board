@@ -135,7 +135,7 @@
 				</c:forEach>
 
 				<br>
-					<input type="submit" name="글쓰기" value="글쓰기" style="background-color: #81c147; padding: 5px; float:right;">
+					<input type="submit" name="글쓰기" value="글쓰기" style="background-color: skyblue; padding: 5px; float:right;">
 				
 				<div class="page-menu">
 					<c:set var="baseUri" value="?boardId=${boardId}" />

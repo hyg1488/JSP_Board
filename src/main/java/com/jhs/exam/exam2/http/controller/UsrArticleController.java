@@ -118,7 +118,7 @@ public class UsrArticleController extends Controller {
 	}
 
 	private void actionDoWrite(Rq rq) {
-		int boardId = 1; // 임시구현 //rq.getIntParam("boardId", 0);
+		int boardId = rq.getIntParam("boardId", 0); // 임시구현 //rq.getIntParam("boardId", 0);
 		int memberId = rq.getLoginedMemberId();
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
