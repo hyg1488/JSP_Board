@@ -36,10 +36,17 @@ public class UsrArticleController extends Controller {
 		case "doDelete":
 			actionDoDelete(rq);
 			break;
+		case "myPage":
+			actionMyPage(rq);
+			break;
 		default:
 			rq.println("존재하지 않는 페이지 입니다.");
 			break;
 		}
+	}
+	
+	private void actionMyPage(Rq rq) {
+		rq.jsp("usr/article/myPage");
 	}
 
 	private void actionDoDelete(Rq rq) {

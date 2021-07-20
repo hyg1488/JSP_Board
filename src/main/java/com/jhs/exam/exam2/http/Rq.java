@@ -44,6 +44,8 @@ public class Rq {
 		return isLogined == false;
 	}
 
+	// by TangE, Rq(req, resp) : 서브릿에서 받은 Request, Responese 데이터를 Rq에서 처리하기 위해 저장
+	//           URI 를 가져와 올바른 형식인지 확인후 올바른 형식인지 확인 - 2021.07.02
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
 		// 들어오는 파리미터를 UTF-8로 해석
 		try {

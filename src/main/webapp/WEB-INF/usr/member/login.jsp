@@ -2,12 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <c:set var="pageTitle" value="로그인" />
 <%@ include file="../part/head.jspf"%>
 
 <section class="section section-member-login px-4">
 	<div class="container mx-auto">
 
+		<c:if test="${rq.logined}">
+			<script>
+				window.history.back();
+			</script>
+		</c:if>
 		<div class="card bordered shadow-lg">
 			<div class="card-title">
 				<a href="javascript:history.back();" class="cursor-pointer">

@@ -36,7 +36,7 @@ public class UsrMemberController extends Controller {
 	private void actionDoLogin(Rq rq) {
 		String loginId = rq.getParam("loginId", "");
 		String loginPw = rq.getParam("loginPw", "");
-
+		
 		if (loginId.length() == 0) {
 			rq.historyBack("loginId를 입력해주세요.");
 			return;
@@ -54,9 +54,9 @@ public class UsrMemberController extends Controller {
 		}
 
 		Member member = (Member) loginRd.getBody().get("member");
-
+		
 		rq.setSessionAttr("loginedMemberJson", Ut.toJson(member, ""));
-		rq.replace(loginRd.getMsg(), "../article/list");
+		rq.replace(loginRd.getMsg(), "../member/login");
 	}
 
 	private void actionShowLogin(Rq rq) {

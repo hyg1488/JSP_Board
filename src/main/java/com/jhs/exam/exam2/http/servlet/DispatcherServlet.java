@@ -13,11 +13,12 @@ import com.jhs.exam.exam2.http.Rq;
 import com.jhs.exam.exam2.http.controller.Controller;
 import com.jhs.mysqliutil.MysqlUtil;
 
+//by TangE, Servlet을 하나만 경유하도록 설계 /usr/ 관련 모든 처리는 이곳에서 이루어진다. -2021.07.01
 @WebServlet("/usr/*")
 public class DispatcherServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		Rq rq = new Rq(req, resp);
-
+		
 		if (rq.isInvalid()) {
 			rq.print("올바른 요청이 아닙니다.");
 			return;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var="pageTitle" value="게시물 리스트" />
+<c:set var="pageTitle" value="마이페이지" />
 <%@ include file="../part/head.jspf"%>
 
 <section class="section section-article-write px-4">
@@ -12,25 +12,23 @@
 				<a href="javascript:history.back();" class="cursor-pointer">
 					<i class="fas fa-chevron-left"></i>
 				</a>
-				<span>게시물 리스트</span>
+				<span>마이 페이지</span>
 			</div>
 
-			<div class="px-4 py-4">
-				<div class="badge badge-primary">
-					<c:if test="${param.searchKeyword == null}">
-						전체게시물 개수
-					</c:if>
-					<c:if test="${param.searchKeyword != null}">
-						검색어 `${param.searchKeyword}`, 게시물 개수
-					</c:if>
-				</div>
-				${totalItemsCount}
-			</div>
-
-			<hr />
 
 			<div class="px-4 py-4">
-				<div class="badge badge-primary">검색</div>
+				<table class="test">
+					<tr>
+						<td>
+							test
+						</td><td>
+							test
+						</td>
+						
+						
+					</tr>
+				</table>
+				<div class="badge badge-primary">ID</div>
 				<form action="">
 					<input type="hidden" name="boardId" value="${boardId}" />
 					<div class="form-control">
@@ -39,13 +37,10 @@
 						</label>
 						<div>
 							<select name="searchKeywordTypeCode" class="select select-bordered w-full max-w-md">
-								<option value="title,body" <c:if test="${param.searchKeywordTypeCode=='title,body'}"> selected="selected" </c:if>>제목,내용</option>
-								<option value="title" <c:if test="${param.searchKeywordTypeCode=='title'}"> selected="selected" </c:if>>제목</option>
-								<option value="body" <c:if test="${param.searchKeywordTypeCode=='body'}"> selected="selected" </c:if>>내용</option>
+								<option value="title,body">제목,내용</option>
+								<option value="title">제목</option>
+								<option value="body" selected="selected">내용</option>
 							</select>
-							
-							
-							
 						</div>
 					</div>
 

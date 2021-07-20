@@ -11,7 +11,7 @@ public class App {
 	
 	public static void init() {
 		// DB 세팅
-		MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "jsp_board");
+		MysqlUtil.setDBInfo("localhost", "hyg", "1234", "jsp_board");
 		MysqlUtil.setDevMode(isDevMode());
 		
 		// 공용 객체 세팅

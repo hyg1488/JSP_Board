@@ -110,7 +110,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="#"
+							<a href="../article/myPage"
 								class="h-full flex items-center px-4 hover:underline hover:text-red-500">
 								<span>
 									<i class="fas fa-user"></i>
